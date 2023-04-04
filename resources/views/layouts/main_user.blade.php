@@ -89,6 +89,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/app-ecommerce-shop.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/forms/wizard.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/plugins/extensions/toastr.css') }}">
+
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -626,6 +627,7 @@
     <script src="{{ asset('app-assets/js/scripts/components.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/pickers/dateTime/pick-a-datetime.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/pages/app-ecommerce-shop.js') }}"></script>
+    <script src="{{ asset('app-assets/js/scripts/pages/invoice.js') }}"></script>
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
@@ -645,7 +647,7 @@
     <script src="{{ asset('app-assets/vendors/js/charts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/charts/chart-chartjs.js') }}"></script>
     <script src="{{ asset('app-assets/js/scripts/pages/app-ecommerce-shop.js') }}"></script>
-    
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>

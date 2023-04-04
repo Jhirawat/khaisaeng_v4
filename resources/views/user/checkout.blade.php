@@ -384,7 +384,7 @@
 
                     document.querySelector('.btn-cvv').addEventListener('click', function() {
                         if (document.getElementById('qrcode').checked) {
-                            window.location.href = "{{ route('qrcode') }}";
+                            window.location.href = "{{ route('upload-slip') }}";
                         } else if (document.getElementById('cash').checked) {
                             window.location.href = "{{ route('billUserdestination') }}";
                         } else {

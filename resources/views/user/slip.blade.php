@@ -61,15 +61,11 @@
 
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form action="{{ route('store-slip') }}" method="POST"
-                                            enctype="multipart/form-data"
-                                            class="number-tab-steps wizard-circle">
+                                        <form name="myForm" action="{{ route('store-slip') }}" method="POST"
+                                            enctype="multipart/form-data" class="number-tab-steps wizard-circle"
+                                            onsubmit="return validateForm()">
                                             <fieldset>
                                                 @csrf
-
-
-
-
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group row">
@@ -77,12 +73,11 @@
                                                                 <span>หลักฐานการโอน :</span>
                                                             </div>
                                                             <div class="col-md-8">
-                                                                    <input type="file" class="form-control"
-                                                                        name="slip_image" placeholder="กดเพื่ออัพโหลรูป" />
+                                                                <input type="file" class="form-control" name="slip_image"
+                                                                    placeholder="กดเพื่ออัพโหลรูป" />
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="col-12">
                                                         <div class="form-group row">
                                                             <div class="col-md-4">
@@ -91,30 +86,41 @@
                                                             <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control"
-                                                                        id="datepicker"  placeholder="วันที่ :" name="slip_date">
+                                                                        id="datepicker" placeholder="วันที่ :"
+                                                                        name="slip_date">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </fieldset>
-
-
+                                            {{-- <div class="col-md-8 offset-md-4">
+                                                <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                                                <a href="{{ route('billUserqrcode') }}" class="btn btn-danger mr-1 mb-1">Cancel</a>
+                                            </div> --}}
                                             <div class="col-md-8 offset-md-4">
-                                                <button type="submit"
-                                                    class="btn btn-primary mr-1 mb-1">Submit</button>
+                                                <form method="POST" action="{{ route('billUserqrcode') }}">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                                                </form>
                                             </div>
 
-                                            {{-- <button style="background-color: #257d0f ;color:white"
-                                                class="btn" type="submit">Save</button> --}}
                                         </form>
                                     </div>
                                 </div>
 
-
-
 {{--
+                                <div class="col-md-8 offset-md-4">
+                                    <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
+                                    <a href="{{ route('billUserqrcode') }}"></a>
+                                </div>
+
+                                <div class="col-md-8 offset-md-4">
+                                    <a href="{{ route('billUserqrcode') }}" class="btn btn-primary mr-1 mb-1">Submit</a>
+                                </div> --}}
+
+
+                                {{--
                                 <div class="card-content">
                                     <div class="card-body">
                                         <form class="form form-horizontal">
@@ -195,5 +201,23 @@
                 }
             });
         });
+
+        function validateForm() {
+            var slipImage = document.forms["myForm"]["slip_image"].value;
+            var slipDate = document.forms["myForm"]["slip_date"].value;
+            if (slipImage == "") {
+                alert("กรุณาอัพโหลดรูปหลักฐานการโอน");
+                return false;
+            }
+            if (slipDate == "") {
+                alert("กรุณาป้อนวันที่ชำระเงิน");
+                return false;
+            }
+        }
+
+
+
+
+
     </script>
 @endsection
