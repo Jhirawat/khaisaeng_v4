@@ -68,11 +68,13 @@
                                     <div class="col text-right">{{ date('d/m/Y') }}</div>
                                 </div>
 
-                                <div> <button onclick="generateNumber()">
-                                        <h5>ORDER
-                                    </button></h5>
-                                    <p class="text" id="result"></p>
-                                </div>
+
+                                {{-- <div>
+                                    <h1>Order Number: {{ $orderNumber }}</h1>
+                                </div> --}}
+
+
+
 
                             </div>
                         </div>
@@ -291,5 +293,12 @@
             // Display the result in the HTML element with id "result"
             document.getElementById("result").innerHTML = "Your random number is: #" + randomNumber;
         }
+
+
+        function generateNumber() {
+  const orderNumber = Math.floor(Math.random() * 900000) + 100000; // สุ่มเลขออเดอร์ 6 หลัก
+  document.getElementById("result").innerHTML = `Order Number: ${orderNumber}`; // แสดงผลลัพธ์
+}
+
     </script>
 @endsection

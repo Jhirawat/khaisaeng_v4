@@ -116,6 +116,7 @@
                                     <!-- Data list view starts -->
                                     <section id="data-thumb-view" class="data-thumb-view-header">
 
+                                   
                                         <!-- dataTable starts -->
                                         <div class="table-responsive">
                                             <table class="table data-thumb-view">
@@ -138,8 +139,8 @@
                                                         <th scope="col">Category</th>
 
 
-
-                                                        {{-- <select class="form-control" name="product_category">
+{{--
+                                                        <select class="form-control" name="product_category">
                                                             <option value="">กรุณาเลือกประเภทสินค้า</option>
                                                             @foreach ($type as $item)
                                                             <option value="{{ $item->type_name }}">{{ $item->type_name }}</option>

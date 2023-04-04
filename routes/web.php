@@ -106,6 +106,8 @@ Route::post('/address-user-store', [App\Http\Controllers\AddressUserController::
 //user-Bill
 Route::get('/Bill-QRCode', [App\Http\Controllers\BillUserQRCodeController::class, 'index'])->name('billUserqrcode');
 Route::get('/Bill-QRCode', [App\Http\Controllers\BillUserQRCodeController::class, 'cartList'])->name('billUserqrcode');
+
+Route::get('/Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'Number'])->name('billUserdestination');
 Route::get('/Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'index'])->name('billUserdestination');
 Route::get('/Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'cartList'])->name('billUserdestination');
 Route::get('/List-Bill', [App\Http\Controllers\BillUserController::class, 'index'])->name('billUserList');

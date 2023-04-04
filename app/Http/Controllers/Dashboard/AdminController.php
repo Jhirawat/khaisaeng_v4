@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\TypeProduct;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -20,4 +21,14 @@ class AdminController extends Controller
             return view('admin.product', compact('productss'));
         }
     }
+
+
+    public function type()
+    {
+        $type = TypeProduct::all();
+
+
+        return view('admin.product',compact('type'));
+    }
+
 }
