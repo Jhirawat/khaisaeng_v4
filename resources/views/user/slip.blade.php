@@ -61,11 +61,12 @@
 
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form action="{{ route('store-imageslip') }}" method="POST"
+                                        <form action="{{ route('store-slip') }}" method="POST"
                                             enctype="multipart/form-data"
                                             class="number-tab-steps wizard-circle">
                                             <fieldset>
                                                 @csrf
+
 
 
 
@@ -77,7 +78,7 @@
                                                             </div>
                                                             <div class="col-md-8">
                                                                     <input type="file" class="form-control"
-                                                                        name="image_" placeholder="กดเพื่ออัพโหลรูป" />
+                                                                        name="slip_image" placeholder="กดเพื่ออัพโหลรูป" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -90,7 +91,7 @@
                                                             <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <input type="text" class="form-control"
-                                                                        id="datepicker"  placeholder="วันที่ :">
+                                                                        id="datepicker"  placeholder="วันที่ :" name="slip_date">
                                                                 </div>
                                                             </div>
                                                         </div>

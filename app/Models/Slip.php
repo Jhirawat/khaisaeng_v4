@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class QRcode extends Model
+class Slip extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'id',
-        'name',
+        // 'name',
         'image',
         'date',
     ];

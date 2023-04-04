@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\QRcode;
+use App\Models\slip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 use Intervention\Image\ImageManagerStatic as Image;
-class QRcodeController extends Controller
+class SlipController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class QRcodeController extends Controller
      */
     public function index()
     {
-        return view('user.qrcode');
+        return view('user.slip');
     }
 
     /**
@@ -39,10 +40,11 @@ class QRcodeController extends Controller
         try {
 
             DB::beginTransaction();
-            $table = new Imageslip();
-            $table->name_slip =  $request->name_slip;
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
+            $table = new slip();
+            // $table->slip_name=  $request->slip_name;
+            $table->slip_date=  $request->slip_date;
+            if ($request->hasFile('slip_image')) {
+                $image = $request->file('slip_image');
                 $extention = $image->getClientOriginalExtension();
                 $fileName  = time() . '.' . $extention;
 
@@ -55,14 +57,14 @@ class QRcodeController extends Controller
 
                 $img->save($location);
 
-                $table->image =  $fileName;
+                $table->slip_image =  $fileName;
             }
             // dd($request->all());
             $table->save();
 
             DB::commit();
             // Alert::success('บันทึกสำเร็จ');
-            return redirect()->route('create')->with('success', 'เพิ่มสำเสร็จ');
+            return redirect()->route('upload-slip')->with('success', 'เพิ่มสำเสร็จ');
         } catch (\Throwable $th) {
             DB::rollback();
             return response()->json([

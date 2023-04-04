@@ -45,7 +45,7 @@ Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->na
 
 
 
-Route::post('/store-imageslip', [App\Http\Controllers\QRCodeController::class, 'store'])->name('store-imageslip');
+// Route::post('/store-imageslip', [App\Http\Controllers\QRCodeController::class, 'store'])->name('store-imageslip');
 
 //orderlist
 
@@ -90,6 +90,18 @@ Route::put('address-update', [App\Http\Controllers\AddressController::class, 'up
 
 
 
+
+// Route::post('/storeslip', [App\Http\Controllers\QRCodeController::class, 'store'])->name('storeslip');
+Route::get('upload-slip', [App\Http\Controllers\SlipController::class, 'index'])->name('upload-slip');
+// Route::get('upload-slip', [App\Http\Controllers\SlipController::class, 'upload'])->name('upload-slip');
+Route::post('store-slip', [App\Http\Controllers\SlipController::class, 'store'])->name('store-slip');
+
+
+// Route::get('type-product-edit/{id}', [App\Http\Controllers\TypeProductController::class, 'edit'])->name('edit.type-product');
+// Route::put('type-product-update', [App\Http\Controllers\TypeProductController::class, 'update'])->name('update.type-product');
+// Route::get('update-status-type-product', [App\Http\Controllers\TypeProductController::class, 'updatestatus'])->name('updatestatus.type-product');
+
+
 //user
 
 Route::get('/home', [App\Http\Controllers\ProductController::class, 'product'])->name('products');
@@ -106,7 +118,6 @@ Route::post('/address-user-store', [App\Http\Controllers\AddressUserController::
 //user-Bill
 Route::get('/Bill-QRCode', [App\Http\Controllers\BillUserQRCodeController::class, 'index'])->name('billUserqrcode');
 Route::get('/Bill-QRCode', [App\Http\Controllers\BillUserQRCodeController::class, 'cartList'])->name('billUserqrcode');
-
 Route::get('/Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'Number'])->name('billUserdestination');
 Route::get('/Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'index'])->name('billUserdestination');
 Route::get('/Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'cartList'])->name('billUserdestination');
@@ -120,6 +131,6 @@ Route::post('/cart-clear', [App\Http\Controllers\CartController::class, 'clearAl
 Route::post('/cart-update', [App\Http\Controllers\CartController::class, 'updateCart'])->name('cartUpdate.user');
 
 
-Route::get('/qrcode', [App\Http\Controllers\QRcodeController::class, 'index'])->name('qrcode');
+
 
 Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');

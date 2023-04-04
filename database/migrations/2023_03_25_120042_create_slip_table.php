@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('slip', function (Blueprint $table) {
+        Schema::create('slips', function (Blueprint $table) {
             $table->id();
-            $table->string('slip_name');
+            // $table->string('slip_name');
             $table->string('slip_image');
             $table->string('slip_date');
             $table->timestamps();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('q_rcodes');
+        // Schema::dropIfExists('qrcodes');
     }
 };
