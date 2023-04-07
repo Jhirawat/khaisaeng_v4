@@ -29,4 +29,24 @@ class BillUserDestinationController extends Controller
     }
 
 
+    public function  imageauto()
+{
+    // สร้างภาพแบบ auto-generated
+    $image = imagecreatetruecolor(400, 400);
+    $bg_color = imagecolorallocate($image, 255, 255, 255);
+    $text_color = imagecolorallocate($image, 0, 0, 0);
+    imagefill($image, 0, 0, $bg_color);
+    imagestring($image, 5, 150, 180, 'Auto-generated image', $text_color);
+
+    // บันทึกภาพลงในฐานข้อมูล
+    $data = base64_encode(imagepng($image));
+    // อัพเดทข้อมูลลงในฐานข้อมูล
+    $query = "UPDATE orderlist SET image_data='$data' WHERE id=1";
+    // ดำเนินการอัพเดทฐานข้อมูล
+    // ...
+
+    // ส่งภาพแบบ auto-generated ไปยังหน้า HTML
+    return view('user.billdestination')->with('data', $data);
+}
+
 }

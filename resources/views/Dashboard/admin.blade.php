@@ -32,7 +32,7 @@
                         <div class="col-lg-6 col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Line Chart</h4>
+                                    <h4 class="card-title">แนวโน้มผลิตภัณฑ์ตามเดือน</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -46,7 +46,7 @@
                         <div class="col-lg-6 col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Line Area Chart</h4>
+                                    <h4 class="card-title">ยอดขายของปีที่ผ่านมาและปีนี้</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -74,7 +74,7 @@
                         <div class="col-lg-6 col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Bar Chart</h4>
+                                    <h4 class="card-title">ยอดขาย สินค้า</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -90,7 +90,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Mixed Chart</h4>
+                                    <h4 class="card-title">ยอดขายแต่ละเดือน ปี65</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -317,15 +317,15 @@
     },
     // colors: ['#3A5794', '#A5C351', '#E14A84'],
     series: [{
-      name: 'TEAM A',
+      name: 'Product A',
       type: 'column',
       data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
     }, {
-      name: 'TEAM B',
+      name: 'Product B',
       type: 'area',
       data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
     }, {
-      name: 'TEAM C',
+      name: 'Product C',
       type: 'line',
       data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
     }],

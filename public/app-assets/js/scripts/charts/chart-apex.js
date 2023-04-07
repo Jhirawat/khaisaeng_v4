@@ -84,10 +84,10 @@ $(document).ready(function () {
       curve: 'smooth'
     },
     series: [{
-      name: 'series1',
+      name: 'ยอดขายปีนี้',
       data: [31, 40, 28, 51, 42, 109, 100]
     }, {
-      name: 'series2',
+      name: 'ยอดขายปีผ่านมา',
       data: [11, 32, 45, 32, 34, 52, 41]
     }],
     legend: {
@@ -199,7 +199,7 @@ $(document).ready(function () {
       data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
     }],
     xaxis: {
-      categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan', 'United States', 'China', 'Germany'],
+      categories: ['น้ำเสาวรส 1 ขวด', 'น้ำสตรอเบอร์รี่ 1 ขวด', 'แยมสตรอเบอร์รี่ 1 กระปุก', 'ไวน์สตรอเบอร์รี่(แพ็ตคู่)', 'น้ำเสาวรส(ลัง)', 'ไวน์สตรอเบอร์รี่ขวดใหญ่(ลัง)', 'ไวน์สตรอเบอร์รี่ขวดเล็ก(ลัง)', 'สตรอเบอร์รี่อบแห้งกระปุก', 'สตรอเบอร์รี่อบแห้ง 10 โล', 'น้ำสตรอเบอร์รี่(ลัง)'],
       tickAmount: 5
     },
     yaxis: {
@@ -233,15 +233,15 @@ $(document).ready(function () {
     },
     // colors: ['#3A5794', '#A5C351', '#E14A84'],
     series: [{
-      name: 'TEAM A',
+      name: 'Product A',
       type: 'column',
       data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
     }, {
-      name: 'TEAM B',
+      name: 'Product  B',
       type: 'area',
       data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
     }, {
-      name: 'TEAM C',
+      name: 'Product  C',
       type: 'line',
       data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
     }],

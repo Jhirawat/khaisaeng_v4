@@ -268,7 +268,9 @@
 
                         </div>
                 </section>
+
                 <!-- invoice page end -->
+                {{-- <img src="data:image/png;base64,{{ $data }}"> --}}
 
             </div>
         </div>
@@ -299,6 +301,7 @@
   const orderNumber = Math.floor(Math.random() * 900000) + 100000; // สุ่มเลขออเดอร์ 6 หลัก
   document.getElementById("result").innerHTML = `Order Number: ${orderNumber}`; // แสดงผลลัพธ์
 }
+
 
     </script>
 @endsection
