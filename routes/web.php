@@ -90,10 +90,10 @@ Route::put('address-update', [App\Http\Controllers\AddressController::class, 'up
 
 
 
-
+//slip
 // Route::post('/storeslip', [App\Http\Controllers\QRCodeController::class, 'store'])->name('storeslip');
 Route::get('upload-slip', [App\Http\Controllers\SlipController::class, 'index'])->name('upload-slip');
-// Route::get('upload-slip', [App\Http\Controllers\SlipController::class, 'upload'])->name('upload-slip');
+Route::get('show-slip', [App\Http\Controllers\SlipController::class, 'show'])->name('show-slip');
 Route::post('store-slip', [App\Http\Controllers\SlipController::class, 'store'])->name('store-slip');
 
 
@@ -120,7 +120,7 @@ Route::get('/Bill-QRCode', [App\Http\Controllers\BillUserQRCodeController::class
 Route::get('/Bill-QRCode', [App\Http\Controllers\BillUserQRCodeController::class, 'cartList'])->name('billUserqrcode');
 // Route::get('/Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'Number'])->name('billUserdestination');
 Route::get('/Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'index'])->name('billUserdestination');
-Route::get('/Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'cartList'])->name('billUserdestination');
+
 Route::get('/List-Bill', [App\Http\Controllers\BillUserController::class, 'index'])->name('billUserList');
 
 //user-cart
@@ -134,3 +134,16 @@ Route::post('/cart-update', [App\Http\Controllers\CartController::class, 'update
 
 
 Route::get('/welcome', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
+
+
+
+
+Route::post('/save-image', [App\Http\Controllers\BillUserDestinationController::class, 'saveImage'])->name('save-image');
+
+
+
+Route::get('Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'cartList'])->name('billUserdestination');
+Route::get('Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'generateOrderNumber'])->name('billUserdestinatio');
+
+Route::get('/generate-order-number', [App\Http\Controllers\OrderController::class, 'generateOrderNumber'])->name('generate-order-number');
+

@@ -28,8 +28,8 @@
             <div class="content-body">
                 <!-- Data list view starts -->
                 <section id="data-list-view" class="data-list-view-header">
-                
-                    
+
+
 
                     <!-- DataTable starts -->
                     <div class="table-responsive">
@@ -44,12 +44,12 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="product-name">CNX1603256605481891</td>                          
+                                    <td class="product-name">CNX1603256605481891</td>
                                     <td class="product-price"><div class="btn btn-primary btn-block delivery-address">
-                                                <a href="{{ route('billUserInfo') }}" style="color:#FFFFFF;">เพิ่มเติม</a>
+                                                <a href="{{ route('billUserList') }}" style="color:#FFFFFF;">เพิ่มเติม</a>
                                                 </div></td>
                                 </tr>
-                                
+
                             </tbody>
                         </table>
                     </div>

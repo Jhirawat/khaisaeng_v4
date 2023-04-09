@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class TypeProductController extends Controller
 {
-  /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -25,7 +25,7 @@ class TypeProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
- 
+
 
     /**
      * Store a newly created resource in storage.
@@ -35,15 +35,81 @@ class TypeProductController extends Controller
      */
     public function store(Request $request)
     {
+        // DB::beginTransaction();
+        // $data = new TypeProduct();
+        // // $data->dpid = IdGenerator::generate(['table' => 'department', 'field' => 'dpid', 'length' => 6, 'prefix' => "DP"]);
+        // $data->type_name  = $request->type_name;
+        // $data->type_status  = 1;
+        // // add other fields
+        // $data->save();
+        // DB::commit();
+        // return redirect()->back()->with('status', 'Student Added Successfully');
+
+
+        //แก้ไขเป็น V.2
+        // DB::beginTransaction();
+        // $data = new TypeProduct();
+        // // get the last id from the table
+        // $lastId = TypeProduct::select('id')->orderBy('id', 'DESC')->first();
+        // // if there is no existing record, set the id to 1
+        // if (!$lastId) {
+        //     $data->id = 1;
+        // } else {
+        //     // set the id to the next number after the last id
+        //     $data->id = $lastId->id + 1;
+        // }
+        // // set the type_status based on the id
+        // if ($data->id == 1) {
+        //     $data->type_status = 1;
+        // } else if ($data->id == 2) {
+        //     $data->type_status = 2;
+        // } else if ($data->id == 3) {
+        //     $data->type_status = 3;
+        // }
+        // // set other fields
+        // $data->type_name = $request->type_name;
+        // $data->save();
+        // DB::commit();
+        // return redirect()->back()->with('status', 'Data Added Successfully');
+
+
+        //แก้ไขเป็น V.3
         DB::beginTransaction();
         $data = new TypeProduct();
-        // $data->dpid = IdGenerator::generate(['table' => 'department', 'field' => 'dpid', 'length' => 6, 'prefix' => "DP"]);
-        $data->type_name  = $request->type_name;
-        $data->type_status  = 1;
-        // add other fields
+        // get the last id from the table
+        $lastId = TypeProduct::select('id')->orderBy('id', 'DESC')->first();
+        // if there is no existing record, set the id to 1
+        if (!$lastId) {
+            $data->id = 1;
+        } else {
+            // set the id to the next number after the last id
+            $data->id = $lastId->id + 1;
+        }
+        // set the type_status based on the id
+        switch ($data->id) {
+            case 1:
+                $data->type_status = 1;
+                break;
+            case 2:
+                $data->type_status = 2;
+                break;
+            case 3:
+                $data->type_status = 3;
+                break;
+            case 4:
+                $data->type_status = 4;
+                break;
+                // add more cases as needed
+            default:
+                // set the type_status to the id number if it is greater than 10
+                $data->type_status = $data->id;
+                break;
+        }
+        // set other fields
+        $data->type_name = $request->type_name;
         $data->save();
         DB::commit();
-        return redirect()->back()->with('status', 'Student Added Successfully');
+        return redirect()->back()->with('status', 'Data Added Successfully');
     }
 
     /**

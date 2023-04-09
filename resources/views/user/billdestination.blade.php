@@ -36,11 +36,16 @@
                         <fieldset class="col-12 col-md-5 mb-1 mb-md-0">
 
                         </fieldset>
-                        <div class="col-12 col-md-7 d-flex flex-column flex-md-row justify-content-end">
+                        {{-- <div class="col-12 col-md-7 d-flex flex-column flex-md-row justify-content-end">
                             <button class="btn btn-primary btn-print mb-1 mb-md-0"> <i class="feather icon-download"></i>
                                 Download</button>
 
+                        </div> --}}
+                        <div class="col-12 col-md-7 d-flex flex-column flex-md-row justify-content-end">
+                            <button class="btn btn-primary btn-print mb-1 mb-md-0" onclick="saveImage()"> <i
+                                    class="feather icon-download"></i> Download</button>
                         </div>
+
                     </div>
                 </section>
                 <!-- invoice functionality end -->
@@ -63,18 +68,25 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 col-12 text-right">
+
+
                                 <div class="invoice-details mt-2">
-                                    <h6 class="mt-2"> วันที่</h6>
-                                    <div class="col text-right">{{ date('d/m/Y') }}</div>
+                                    {{-- <h6 class="mt-2"> วันที่ </h6> --}}
+                                    {{-- <h6 class="mt-2"> วันที่ : {{ date('d/m/Y') }}</h6> --}}
+                                    {{-- <div class="col text-right">{{ date('d/m/Y') }}</div> --}}
+                                    <h6>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</h6>
+                                </div>
+
+                                <div class="invoice-details mt-2">
+                                    {{-- <h6 class="mt-2"> วันที่ </h6> --}}
+                                    <h6 class="mt-2"> วันที่ : {{ date('d/m/Y') }}</h6>
+                                    {{-- <div class="col text-right">{{ date('d/m/Y') }}</div> --}}
+                                    <h6>หมายเลขคำสั่งซื้อ : {{ $order_number }}</h6>
                                 </div>
 
 
-                                {{-- <div>
-                                    <h1>Order Number: {{ $orderNumber }}</h1>
-                                </div> --}}
 
-
-
+                                    {{-- <h6>หมายเลขคำสั่งซื้อ : {{ $order_number }}</h6> --}}
 
                             </div>
                         </div>
@@ -139,7 +151,8 @@
                                                 <th>รวม</th>
                                         </thead>
                                         <tbody>
-                                            @foreach ($cartItems as $cart)
+                                            @if (!empty($cartItems))
+                                                {{-- @foreach ($cartItems as $cart) --}}
                                                 <tr>
                                                     <td>{{ $cart->id }}</td>
                                                     <td>{{ $cart->name }}</td>
@@ -147,7 +160,8 @@
                                                     <td>{{ $cart->price }}</td>
                                                     <td>{{ $cart->quantity * $cart->price }}</td>
                                                 </tr>
-                                            @endforeach
+                                                {{-- @endforeach --}}
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>
@@ -158,115 +172,118 @@
 
 
 
-                            <div class="card-group">
-                                <div class="card">
-                                  <div class="card-body">
-                                    <h5 >การชำระเงิน (Condtions of Payments)</h5>
+
+                        <div class="card-group">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>การชำระเงิน (Condtions of Payments)</h5>
                                     <div class="brand-list" id="brands">
                                         <ul class="list-unstyled">
                                             <div class="row">
-                                            <div class="col">
-                                                <li class="d-flex justify-content-between align-items-center py-25">
-                                                    <span class="vs-checkbox-con vs-checkbox-primary">
-                                                      <input type="checkbox" value="true"  disabled>
-                                                      <span class="vs-checkbox">
-                                                        <span class="vs-checkbox--check">
-                                                          <i class="vs-icon feather icon-check"></i>
+                                                <div class="col">
+                                                    <li class="d-flex justify-content-between align-items-center py-25">
+                                                        <span class="vs-checkbox-con vs-checkbox-primary">
+                                                            <input type="checkbox" value="true" disabled>
+                                                            <span class="vs-checkbox">
+                                                                <span class="vs-checkbox--check">
+                                                                    <i class="vs-icon feather icon-check"></i>
+                                                                </span>
+                                                            </span>
+                                                            <span class="">ชำระเงินผ่าน QRCode</span>
                                                         </span>
-                                                      </span>
-                                                      <span class="">ชำระเงินผ่าน QRCode</span>
-                                                    </span>
-                                                  </li>
+                                                    </li>
 
-                                        </div>
-                                            <div class="col">
-                                            <li class="d-flex justify-content-between align-items-center py-25">
-                                                <span class="vs-checkbox-con vs-checkbox-primary">
-                                                    <input type="checkbox" value="true" checked disabled>
-                                                    <span class="vs-checkbox">
-                                                        <span class="vs-checkbox--check">
-                                                            <i class="vs-icon feather icon-check"></i>
+                                                </div>
+                                                <div class="col">
+                                                    <li class="d-flex justify-content-between align-items-center py-25">
+                                                        <span class="vs-checkbox-con vs-checkbox-primary">
+                                                            <input type="checkbox" value="true" checked disabled>
+                                                            <span class="vs-checkbox">
+                                                                <span class="vs-checkbox--check">
+                                                                    <i class="vs-icon feather icon-check"></i>
+                                                                </span>
+                                                            </span>
+                                                            <span class="">
+                                                                ชำระเงินปลายทาง
+                                                            </span>
                                                         </span>
-                                                    </span>
-                                                    <span class="">
-                                                        ชำระเงินปลายทาง
-                                                    </span>
-                                                </span>
-                                            </li>
-                                        </div>
-                                    </div>
+                                                    </li>
+                                                </div>
+                                            </div>
                                         </ul>
                                     </div>
-                                  </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <th>ยอดรวม</th>
-                                                    <td>{{ Cart::getTotal() }} บาท</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>จำนวนภาษีมูลค่าเพิ่ม</th>
-                                                    <td>{{ (Cart::getTotal() * 7) / 107 }} บาท</td>
-                                                </tr>
-                                                <tr>
-                                                    <th>ค่าจัดส่ง (30%)</th>
-                                                    <td>{{ (Cart::getTotal() * 30) / 100 }} บาท</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <th>ยอดรวมสุทธิ</th>
-                                                    <td>{{ (Cart::getTotal() * 130) / 100 }} บาท</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                              </div>
-
-                              <br />
-                              <br />
-
-                            <div class="card-group">
-                                <div class="card">
-
-                                    <div class="card-body">
-
-                                        <p class="card-text-center">"___________________________" <br> ผู้รับเงิน / Bill
-                                            Receiver Signature <br>วันที่ / Date "_____{{ date('d/m/Y') }}_____"</p>
-                                    </div>
-                                </div>
-                                <div class="card">
-
-                                    <div class="card-body">
-                                        <img class="card-img-top" src="http://www.americancivilwarstory.com/images/Coca-Cola_logo.svg.png" alt="Card image cap">
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <p class="card-text-center">"___________________________" <br> ผู้มีอำนาจลงนาม /
-                                            Authorized Signature <br>วันที่ / Date "_____{{ date('d/m/Y') }}_____"</p>
-
-                                    </div>
                                 </div>
                             </div>
 
+                            <div class="card">
+                                <div class="table-responsive">
+                                    <table class="table table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <th>ยอดรวม</th>
+                                                <td>{{ Cart::getTotal() }} บาท</td>
+                                            </tr>
+                                            <tr>
+                                                <th>จำนวนภาษีมูลค่าเพิ่ม</th>
+                                                <td>{{ (Cart::getTotal() * 7) / 107 }} บาท</td>
+                                            </tr>
+                                            <tr>
+                                                <th>ค่าจัดส่ง (30%)</th>
+                                                <td>{{ (Cart::getTotal() * 30) / 100 }} บาท</td>
+                                            </tr>
 
-
-                            <!-- Invoice Footer -->
-                            <div id="invoice-footer" class="text-center pt-3">
-                                <p>ขอบคุณมากที่ให้โอกาสให้เราได้บริการคุณค่ะ/ครับ
-                                    เราขอแสดงความนับถือและความชื่นชมที่สูงสุดให้กับท่านที่ไว้วางใจในบริการของเรา
-                                    {{-- <span class="mr-4">BANK: <strong>FTSBUS33</strong></span>
-                                <span>IBAN: <strong>G882-1111-2222-3333</strong></span> --}}
-                                </p>
+                                            <tr>
+                                                <th>ยอดรวมสุทธิ</th>
+                                                <td>{{ (Cart::getTotal() * 130) / 100 }} บาท</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <!--/ Invoice Footer -->
-
                         </div>
+
+                        <br />
+                        <br />
+
+                        <div class="card-group">
+                            <div class="card">
+
+                                <div class="card-body">
+
+                                    <p class="card-text-center">"___________________________" <br> ผู้รับเงิน / Bill
+                                        Receiver Signature <br>วันที่ / Date "_____{{ date('d/m/Y') }}_____"</p>
+                                </div>
+                            </div>
+                            <div class="card">
+
+                                <div class="card-body">
+                                    <img class="card-img-top"
+                                        src="http://www.americancivilwarstory.com/images/Coca-Cola_logo.svg.png"
+                                        alt="Card image cap">
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-text-center">"___________________________" <br> ผู้มีอำนาจลงนาม /
+                                        Authorized Signature <br>วันที่ / Date "_____{{ date('d/m/Y') }}_____"</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Invoice Footer -->
+                        <div id="invoice-footer" class="text-center pt-3">
+                            <p>ขอบคุณมากที่ให้โอกาสให้เราได้บริการคุณค่ะ/ครับ
+                                เราขอแสดงความนับถือและความชื่นชมที่สูงสุดให้กับท่านที่ไว้วางใจในบริการของเรา
+                                {{-- <span class="mr-4">BANK: <strong>FTSBUS33</strong></span>
+                                <span>IBAN: <strong>G882-1111-2222-3333</strong></span> --}}
+                            </p>
+                        </div>
+                        <!--/ Invoice Footer -->
+
+                    </div>
                 </section>
 
                 <!-- invoice page end -->
@@ -298,10 +315,23 @@
 
 
         function generateNumber() {
-  const orderNumber = Math.floor(Math.random() * 900000) + 100000; // สุ่มเลขออเดอร์ 6 หลัก
-  document.getElementById("result").innerHTML = `Order Number: ${orderNumber}`; // แสดงผลลัพธ์
-}
+            const orderNumber = Math.floor(Math.random() * 900000) + 100000; // สุ่มเลขออเดอร์ 6 หลัก
+            document.getElementById("result").innerHTML = `Order Number: ${orderNumber}`; // แสดงผลลัพธ์
+        }
 
 
+        function saveImage() {
+            var canvas = document.getElementById("canvas");
+            var dataURL = canvas.toDataURL();
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert(this.responseText);
+                }
+            };
+            xhttp.open("POST", "/save-image", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("image=" + dataURL);
+        }
     </script>
 @endsection

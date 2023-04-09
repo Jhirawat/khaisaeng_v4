@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use Session;
+
 use Illuminate\Http\Request;
+
 
 class BillUserDestinationController extends Controller
 {
@@ -15,38 +19,26 @@ class BillUserDestinationController extends Controller
     {
         $cartItems = \Cart::getContent();
         // dd($cartItems);
-        return view('user.billdestination', compact('cartItems'));
+        // return view('user.billdestination', compact('cartItems'));
+
+        return view('billdestination', ['cartItems' => $cartItems]);
     }
 
-    public function Number()
+    public function generateOrderNumber()
     {
-        $orderNumber = session('order_number', 1);
-        // สร้างเลขออเดอร์ใหม่โดยเพิ่มค่าจากเลขออเดอร์เดิม 1
-        $newOrderNumber = str_pad((int)$orderNumber + 1, 6, "0", STR_PAD_LEFT);
-        // บันทึกค่าเลขออเดอร์ใหม่ลง session
-        session(['order_number' => $newOrderNumber]);
-        return view('user.billdestination', ['orderNumber' => $newOrderNumber]);
+        $today = Carbon::now();
+        $order_number = $today->format('ymd') . sprintf("%06d", 1);
+
+        // check if the last order number was generated today, if yes, increase the counter
+        if (Session::has('last_order_number_date') && Session::get('last_order_number_date') == $today->format('Ymd')) {
+            $latest_counter = intval(Session::get('last_order_number_counter'));
+            $order_number = $today->format('ymd') . sprintf("%06d", $latest_counter + 1);
+        }
+
+        Session::put('last_order_number_date', $today->format('Ymd'));
+        Session::put('last_order_number_counter', substr($order_number, 6));
+
+        $data = ['order_number' => $order_number];
+        return view('user.billdestination', $data);
     }
-
-
-    public function  imageauto()
-{
-    // สร้างภาพแบบ auto-generated
-    $image = imagecreatetruecolor(400, 400);
-    $bg_color = imagecolorallocate($image, 255, 255, 255);
-    $text_color = imagecolorallocate($image, 0, 0, 0);
-    imagefill($image, 0, 0, $bg_color);
-    imagestring($image, 5, 150, 180, 'Auto-generated image', $text_color);
-
-    // บันทึกภาพลงในฐานข้อมูล
-    $data = base64_encode(imagepng($image));
-    // อัพเดทข้อมูลลงในฐานข้อมูล
-    $query = "UPDATE orderlist SET image_data='$data' WHERE id=1";
-    // ดำเนินการอัพเดทฐานข้อมูล
-    // ...
-
-    // ส่งภาพแบบ auto-generated ไปยังหน้า HTML
-    return view('user.billdestination')->with('data', $data);
-}
-
 }

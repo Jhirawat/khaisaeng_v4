@@ -31,4 +31,85 @@ class AdminController extends Controller
         return view('admin.product',compact('type'));
     }
 
+
+
+    // public function show($id)
+    // {
+    //     //
+    //     $data = Product::find($id);
+    //     return response()->json($data);
+    // }
+
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function update(Request $request)
+    // {
+    //     $id = $request->id;
+
+    //     $product = Product::find($id);
+    //     //dd($product);
+
+    //     if ($request->name) {
+    //         $product->name = $request->name;
+    //     }
+
+    //     if ($request->image) {
+    //         $image = $request->file('image');
+
+    //         $extention = $image->getClientOriginalExtension();
+
+    //         $fileName  = time() . '.' . $extention;
+
+    //         $location = 'images/' . $fileName;
+
+    //         $img = image::make($image);
+
+    //         $img->resize(500, 500, function ($constraint) {
+    //             $constraint->aspectRatio();
+    //         });
+
+    //         $img->save($location);
+
+    //         $product->image =  $fileName;
+    //     }
+
+    //     if ($request->price) {
+    //         $product->price = $request->price;
+    //     }
+
+    //     if ($request->description) {
+    //         $product->description = $request->description;
+    //     }
+
+    //     $product->update();
+
+    //     // return redirect()->route('admin')->with('success', 'บันทึกสำเสร็จ');
+    //     return redirect()->route('adminhome');
+    // }
+
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function destroy($id)
+    // {
+    //     $product = Product::find($id);
+    //     $product->delete();
+    // }
+
+    // public function search($name)
+    // {
+    //     $products = Product::where([
+    //         ['name', 'like', '%' . $name . '%']
+    //     ])->get();
+
+    //     return $products;
+    // }
 }
