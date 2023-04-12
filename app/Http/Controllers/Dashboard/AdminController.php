@@ -112,4 +112,48 @@ class AdminController extends Controller
 
     //     return $products;
     // }
+    public function update(Request $request)
+    {
+        $id = $request->id;
+
+        $product = Product::find($id);
+        //dd($product);
+
+        if ($request->product_name) {
+            $product->product_name = $request->product_name;
+        }
+
+        if ($request->product_image) {
+            $product_image = $request->file('image');
+
+            $extention = $product_image->getClientOriginalExtension();
+
+            $fileName  = time() . '.' . $extention;
+
+            $location = 'images/' . $fileName;
+
+            $img = Image::make($product_image);
+
+            $img->resize(500, 500, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $img->save($location);
+
+            $product->product_image =  $fileName;
+        }
+
+        if ($request->price) {
+            $product->product_price = $request->product_price;
+        }
+
+        if ($request->description) {
+            $product->description = $request->description;
+        }
+
+        $product->update();
+
+        // return redirect()->route('admin')->with('success', 'บันทึกสำเสร็จ');
+        return redirect()->route('admin.product');
+    }
 }
