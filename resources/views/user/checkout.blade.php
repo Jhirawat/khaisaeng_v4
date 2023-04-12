@@ -386,7 +386,7 @@
                         if (document.getElementById('qrcode').checked) {
                             window.location.href = "{{ route('upload-slip') }}";
                         } else if (document.getElementById('cash').checked) {
-                            window.location.href = "{{ route('billUserdestination') }}";
+                            window.location.href = "/Bill-Destination";
                         } else {
                             alert('กรุณาเลือกวิธีการชำระเงินจากด้านล่างนี้ 1 ช่องทางขอบคุณครับ/ค่ะ');
                         }
