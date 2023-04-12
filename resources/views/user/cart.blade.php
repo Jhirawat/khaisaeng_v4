@@ -87,12 +87,6 @@
                                                         class="img-fluid" alt="img-placeholder">
                                                 </div>
                                             </div>
-
-
-
-
-
-
                                             {{-- <div class="item-img text-center">
                                                 <a href="app-ecommerce-details.html">
                                                     <img src="../../../app-assets/images/pages/eCommerce/1.png" class="img-fluid" alt="img-placeholder">
