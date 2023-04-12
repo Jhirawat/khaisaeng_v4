@@ -190,13 +190,13 @@
                                                 <div class="num-block skin-2">
                                                     <div class="num-in">
                                                         <button class="minus dis"></button>
-                                                        <input type="hidden" value="{{ $item->product_id }}" name="id">
+                                                        <input type="hidden" value="{{ $item->id }}" name="id">
                                                         <input type="hidden" value="{{ $item->product_name }}" name="name">
                                                         <input type="hidden" value="{{ $item->product_price }}" name="price">
                                                         <input type="hidden" value="{{ $item->product_image }}" name="image">
                                                         <input type="hidden" value="1" name="quantity">
 
-                                                        <input type="text" class="in-num" value="1" readonly name="quantity" value="{{ $item->quantity }}" class="w-6 text-center bg-gray-300" />
+                                                        <input type="text" class="in-num" value="1" readonly name="quantity" value="{{ $item->product_quantity }}" class="w-6 text-center bg-gray-300" />
 
                                                         <button class="plus"></button>
 
@@ -214,7 +214,6 @@
                                             </div>
                                             <hr>
                                         </form>
-
                                     </div>
                                 </div>
                             </div>

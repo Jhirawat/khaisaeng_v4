@@ -83,16 +83,10 @@
                                         <div class="card-content">
                                             <div class="card-body">
                                                 <div class="item-img text-center">
-                                                    <img src="{{ asset('images/' . $cart->attributes->product_image) }}"
+                                                    <img src="{{ asset('images/' . $cart->attributes->image) }}"
                                                         class="img-fluid" alt="img-placeholder">
                                                 </div>
                                             </div>
-
-
-
-
-
-
                                             {{-- <div class="item-img text-center">
                                                 <a href="app-ecommerce-details.html">
                                                     <img src="../../../app-assets/images/pages/eCommerce/1.png" class="img-fluid" alt="img-placeholder">
@@ -105,7 +99,7 @@
 
                                             <div class="card-body">
                                                 <div class="item-name">
-                                                    {{ $cart->product_name }}
+                                                    {{ $cart->name }}
                                                     <span></span>
                                                 </div>
                                                 <div class="item-quantity">
@@ -121,7 +115,7 @@
                                                                         value="{{ $cart->id }}">
                                                                     <input type="text" class="in-num" readonly
                                                                         name="quantity"
-                                                                        value="{{ $cart->product_quantity }}"class="w-6 text-center bg-gray-300" />
+                                                                        value="{{ $cart->quantity }}"class="w-6 text-center bg-gray-300" />
                                                                     <button class="plus"></button>
                                                                 </div>
                                                             </div>
@@ -166,7 +160,7 @@
                                                 <div class="item-wrapper">
                                                     <div class="item-cost">
                                                         <h6 class="item-price">
-                                                            {{ $cart->product_price }} บาท
+                                                            {{ $cart->price }} บาท
                                                         </h6>
 
                                                     </div>
@@ -257,14 +251,14 @@
                                             @foreach ($cartItems as $cart)
                                             <div class="detail">
                                             <div class="detail-amt">
-                                              {{ $cart->product_name }}
+                                              {{ $cart->name }}
                                             </div>
                                             <div class="detail-amt">
-                                                {{ ($cart->product_price)}} x
-                                                {{ ($cart->product_quantity)}}
+                                                {{ ($cart->price)}} x
+                                                {{ ($cart->quantity)}}
                                             </div>
                                               <div class="detail-amt">
-                                                {{ ($cart->product_quantity) * ($cart->product_price) }} บาท
+                                                {{ ($cart->quantity) * ($cart->price) }} บาท
                                             </div>
                                         </div>
                                         @endforeach
