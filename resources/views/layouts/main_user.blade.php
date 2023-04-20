@@ -298,7 +298,7 @@
     <!-- BEGIN: Header-->
     <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
         <div class="navbar-wrapper">
-            <div class="navbar-container content" style="font-family: 'Kanit', sans-serif; font-weight:800;">
+            <div class="navbar-container fixed-top content" style="font-family: 'Kanit', sans-serif; font-weight:800;">
                 <div class="navbar-collapse" id="navbar-mobile">
                     <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
                         <ul class="nav navbar-nav">
@@ -315,7 +315,7 @@
                             <!--   option Calendar-->
                         </ul>
                     </div>
-                    <ul class="nav navbar-nav float-right">
+                    <ul class="nav navbar-nav  float-right">
 
                         {{-- <li class="dropdown dropdown-notification nav-item">
                             <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">

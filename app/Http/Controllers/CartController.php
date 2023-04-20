@@ -158,7 +158,7 @@ class CartController extends Controller
     public function updateCart(Request $request)
     {
         $cartItem = \Cart::get($request->id);
-        
+
         if ($cartItem) {
             // อัพเดตจำนวนสินค้า
             \Cart::update(
