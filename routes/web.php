@@ -143,7 +143,7 @@ Route::post('/save-image', [App\Http\Controllers\BillUserDestinationController::
 
 
 Route::get('Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'cartList'])->name('billUserdestination');
-Route::get('Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'generateOrderNumber'])->name('billUserdestinatio');
+Route::get('Bill-Destination', [App\Http\Controllers\BillUserDestinationController::class, 'generateOrderNumber'])->name('billUserdestination');
 
 Route::get('/generate-order-number', [App\Http\Controllers\OrderController::class, 'generateOrderNumber'])->name('generate-order-number');
 
