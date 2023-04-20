@@ -169,11 +169,10 @@
 
 
                                                                 <button type="button" class="btn " data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal"
-                                                                    onclick="getData({{ $item }})"
-                                                                    style="background-color: #158c1d;height: 30px;width: 75px;padding: 0; color:white;border-radius: 7px;">
-                                                                    <i class="feather icon-edit"></i>แก้ไข
-                                                                </button>
+                                                                data-bs-target="#exampleModal" onclick="getData({{ $item }})"
+                                                                style="background-color: #158c1d;height: 30px;width: 75px;padding: 0; color:white;border-radius: 7px;">
+                                                                <i class="feather icon-edit"></i>แก้ไข
+                                                            </button>
 
                                                             </td>
                                                             <td>

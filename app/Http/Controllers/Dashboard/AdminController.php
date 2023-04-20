@@ -116,11 +116,11 @@ class AdminController extends Controller
     {
         $id = $request->id;
 
-        $product = Product::find($id);
+        $products = Product::find($id);
         //dd($product);
 
         if ($request->product_name) {
-            $product->product_name = $request->product_name;
+            $products->product_name = $request->product_name;
         }
 
         if ($request->product_image) {
@@ -140,18 +140,18 @@ class AdminController extends Controller
 
             $img->save($location);
 
-            $product->product_image =  $fileName;
+            $products->product_image =  $fileName;
         }
 
         if ($request->price) {
-            $product->product_price = $request->product_price;
+            $products->product_price = $request->product_price;
         }
 
         if ($request->description) {
-            $product->description = $request->description;
+            $products->description = $request->description;
         }
 
-        $product->update();
+        $products->update();
 
         // return redirect()->route('admin')->with('success', 'บันทึกสำเสร็จ');
         return redirect()->route('admin.product');

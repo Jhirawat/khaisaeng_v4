@@ -39,11 +39,11 @@ Route::get('select-type', [App\Http\Controllers\ProductController::class, 'type'
 // Route::get('/create', [App\Http\Controllers\HomeController::class, 'create'])->name('create');
 Route::post('/store', [App\Http\Controllers\ProductController::class, 'store'])->name('store');
 Route::get('/admin-show', [App\Http\Controllers\ProductController::class, 'show'])->name('admin.show');
-Route::post('/admin-update', [App\Http\Controllers\ProductController::class, 'update'])->name('admin.update');
+// Route::post('/admin-update', [App\Http\Controllers\ProductController::class, 'update'])->name('admin.update');
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('adminhome');
 
 
-
+Route::post('/admin-update', [App\Http\Controllers\Dashboard\AdminController::class, 'update'])->name('admin.update');
 
 // Route::post('/store-imageslip', [App\Http\Controllers\QRCodeController::class, 'store'])->name('store-imageslip');
 
