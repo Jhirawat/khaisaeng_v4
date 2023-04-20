@@ -46,8 +46,7 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show()
-    {
-        {
+    { {
             $showAddress = AddressUser::all();
 
             return view('user.cart', compact('showAddress'));
@@ -88,10 +87,32 @@ class CartController extends Controller
         //
     }
 
+    // public function cartList()
+    // {
+    //     $cartItems = \Cart::getContent();
+    //     // dd($cartItems);
+    //     return view('user.cart', compact('cartItems'));
+    // }
+
+
+    // public function cartList()
+    // {
+    //     $cartItems = \Cart::getContent();
+    //     // dd($cartItems);
+    //     return view('user.cart', ['cartItems' => $cartItems]);
+    // }
+
+    // public function cartList()
+    // {
+    //     $cartItems = \Cart::getContent();
+    //     // dd($cartItems);
+    //     view()->share('cartItems', $cartItems);
+    //     return view('user.cart');
+    // }
+
     public function cartList()
     {
         $cartItems = \Cart::getContent();
-        // dd($cartItems);
         return view('user.cart', compact('cartItems'));
     }
 
@@ -100,36 +121,94 @@ class CartController extends Controller
     {
         \Cart::add(
             [
-            'id' => $request->id,
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
-            'attributes' => array(
-            'image' => $request->image,
-            ),
-        ]);
+                'id' => $request->id,
+                'name' => $request->name,
+                'price' => $request->price,
+                'quantity' => $request->quantity,
+                'attributes' => array(
+                    'image' => $request->image,
+                ),
+            ]
+        );
         session()->flash('success', 'Product is Added to Cart Successfully !');
 
         return redirect()->route('products');
     }
 
+    // public function updateCart(Request $request)
+    // {
+    //     \Cart::update(
+    //         $request->id,
+    //         [
+    //             'quantity' => [
+    //                 'relative' => false,
+    //                 'value' => $request->quantity
+    //             ],
+    //         ]
+    //     );
+
+
+    //     session()->flash('success', 'Item Cart is Updated Successfully !');
+
+    //     return redirect()->route('cartList.user');
+    // }
+
+
+
     public function updateCart(Request $request)
     {
-        \Cart::update(
-            $request->id,
-            [
-                'quantity' => [
-                    'relative' => false,
-                    'value' => $request->quantity
-                ],
-            ]
-        );
+        $cartItem = \Cart::get($request->id); // หาก CartItem ที่ต้องการอัพเดต
 
+        // ตรวจสอบว่ามีสินค้านี้อยู่ในตะกร้าหรือไม่
+        if ($cartItem) {
+            // อัพเดตจำนวนสินค้า
+            \Cart::update(
+                $request->id,
+                [
+                    'quantity' => [
+                        'relative' => false,
+                        'value' => $request->quantity
+                    ],
+                ]
+            );
 
-        session()->flash('success', 'Item Cart is Updated Successfully !');
+            // สลับตำแหน่งของสินค้าใหม่กับสินค้าที่อยู่ข้างล่างสุด
+            $cartItems = \Cart::getContent();
+            $cartItems = $cartItems->sortBy(function ($item, $key) use ($request) {
+                if ($item->id == $request->id) {
+                    return 0;
+                } else if ($item->id == $cartItem->id) {
+                    return 1;
+                } else {
+                    return 2;
+                }
+            });
+
+            // บันทึกข้อมูลสินค้าใหม่ที่อัพเดตแล้วกลับเข้าสู่ตะกร้า
+            \Cart::clear();
+            foreach ($cartItems as $item) {
+                \Cart::add(
+                    [
+                        'id' => $item->id,
+                        'name' => $item->name,
+                        'price' => $item->price,
+                        'quantity' => $item->quantity,
+                        'attributes' => [
+                            'image' => $item->attributes['image'],
+                        ],
+                    ]
+                );
+            }
+
+            session()->flash('success', 'Item Cart is Updated Successfully !');
+        } else {
+            session()->flash('error', 'Item Cart not found !');
+        }
 
         return redirect()->route('cartList.user');
     }
+
+
 
     public function removeCart(Request $request)
     {
@@ -147,16 +226,4 @@ class CartController extends Controller
 
         return redirect()->route('cartList.user');
     }
-
-
-
-
-
 }
-
-
-
-
-
-
-
