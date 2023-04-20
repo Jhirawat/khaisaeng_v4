@@ -240,7 +240,7 @@
                                 <div class="card">
 
                                     <div class="card-body">
-                                        <img class="card-img-top" src="http://www.americancivilwarstory.com/images/Coca-Cola_logo.svg.png" alt="Card image cap">
+                                        <img class="card-img-top" src="https://media.discordapp.net/attachments/799534657523154967/1098564800763662396/Red_Retro_Doodle_Strawberry_Original_Fruit_Logo_2.png?width=312&height=312" alt="Card image cap ">
                                     </div>
                                 </div>
                                 <div class="card">

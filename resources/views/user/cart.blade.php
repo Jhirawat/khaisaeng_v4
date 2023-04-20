@@ -327,10 +327,15 @@
 
                                                 <hr>
 
-
+                                                {{--
                                                 <form action="{{ route('checkout') }}" method="GET">
                                                     @csrf
                                                     <button class="btn btn-primary btn-block place-order">ดำเนินการต่อ :</button>
+                                                </form> --}}
+                                                <form id="checkoutForm" action="{{ route('checkout') }}" method="GET">
+                                                    @csrf
+                                                    <button class="btn btn-primary btn-block place-order">ดำเนินการต่อ
+                                                        :</button>
                                                 </form>
 
                                                 {{-- <div class="btn btn-primary btn-block delivery-address">
@@ -483,6 +488,15 @@
                 return false;
             });
 
+        });
+
+
+        document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+            var cartItemsCount = {{ count($cartItems) }};
+            if (cartItemsCount === 0) {
+                event.preventDefault(); // ไม่ให้ฟอร์มส่งข้อมูล
+                alert('กรุณาเพิ่มสินค้าก่อนทำการดำเนินการต่อ');
+            }
         });
     </script>
 @endsection
