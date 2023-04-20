@@ -157,9 +157,8 @@ class CartController extends Controller
 
     public function updateCart(Request $request)
     {
-        $cartItem = \Cart::get($request->id); // หาก CartItem ที่ต้องการอัพเดต
-
-        // ตรวจสอบว่ามีสินค้านี้อยู่ในตะกร้าหรือไม่
+        $cartItem = \Cart::get($request->id);
+        
         if ($cartItem) {
             // อัพเดตจำนวนสินค้า
             \Cart::update(
@@ -174,7 +173,7 @@ class CartController extends Controller
 
             // สลับตำแหน่งของสินค้าใหม่กับสินค้าที่อยู่ข้างล่างสุด
             $cartItems = \Cart::getContent();
-            $cartItems = $cartItems->sortBy(function ($item, $key) use ($request) {
+            $cartItems = $cartItems->sortBy(function ($item, $key) use ($request, $cartItem) {
                 if ($item->id == $request->id) {
                     return 0;
                 } else if ($item->id == $cartItem->id) {
