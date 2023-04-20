@@ -96,7 +96,6 @@
             let description = document.getElementById('description');
             description.value = data.description;
         }
-        
     </script>
 @endsection
 
@@ -140,7 +139,7 @@
                                                         <th scope="col">Category</th>
 
 
-{{--
+                                                        {{--
                                                         <select class="form-control" name="product_category">
                                                             <option value="">กรุณาเลือกประเภทสินค้า</option>
                                                             @foreach ($type as $item)
@@ -170,10 +169,11 @@
 
 
                                                                 <button type="button" class="btn " data-bs-toggle="modal"
-                                                                data-bs-target="#exampleModal" onclick="getData({{ $item }})"
-                                                                style="background-color: #158c1d;height: 30px;width: 75px;padding: 0; color:white;border-radius: 7px;">
-                                                                <i class="feather icon-edit"></i>แก้ไข
-                                                            </button>
+                                                                    data-bs-target="#exampleModal"
+                                                                    onclick="getData({{ $item }})"
+                                                                    style="background-color: #158c1d;height: 30px;width: 75px;padding: 0; color:white;border-radius: 7px;">
+                                                                    <i class="feather icon-edit"></i>แก้ไข
+                                                                </button>
 
                                                             </td>
                                                             <td>
@@ -194,49 +194,70 @@
                                                 </tbody>
                                             </table>
 
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Product</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="{{ route('admin.update') }}" method="POST"
-                                                            enctype="multipart/form-data">
-                                                            @csrf
+                                            <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update
+                                                                Product</h1>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{ route('admin.update') }}" method="POST"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
 
-                                                            <input type="text" id="id" name="id" class="hidden" />
+                                                                <input type="text" id="id" name="id"
+                                                                    class="hidden" />
 
-                                                            {{-- <input type="text" class="form-control" id="product-id" name="id"> --}}
-                                                            <label class="form-label">Name</label>
-                                                            <input type="text" class="form-control" id="name" name="name" />
-                                                            {{--
+                                                                {{-- <input type="text" class="form-control" id="product-id" name="id"> --}}
+                                                                <label class="form-label">Name</label>
+                                                                <input type="text" class="form-control" id="name"
+                                                                    name="name" />
+                                                                {{--
                                                 <label for="image" class="form-label">Image</label>
                                                 <input type="text" class="form-control" id="product-image" name="image"> --}}
-                                                            <label for="image" class="form-label">Image</label>
-                                                            <input type="file" class="form-control" name="image"
-                                                                placeholder="Image URL" />
+                                                                <label for="product_image" class="form-label">Image</label>
+                                                                <input type="file" class="form-control" name="image"
+                                                                    placeholder="Image URL" />
 
-                                                            <label for="price" class="form-label">Price</label>
-                                                            <input type="text" class="form-control" id="price" name="price" />
+                                                                <label for="product_price" class="form-label">Price</label>
+                                                                <input type="text" class="form-control" id="price"
+                                                                    name="price" />
 
-                                                            <label for="description" class="form-label">Description</label>
-                                                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-                                                            <br>
+                                                                <label for="product_category"
+                                                                    class="form-label">ประเภท</label>
+                                                                {{-- <select class="form-control" name="product_category">
+                                                                    <option value="">กรุณาเลือกประเภทสินค้า</option>
+                                                                    @foreach ($type as $item)
+                                                                        <option value="{{ $item->type_name }}">
+                                                                            {{ $item->type_name }}</option>
+                                                                    @endforeach
+                                                                </select> --}}
 
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                                            </div>
-                                                        </form>
+
+
+
+
+
+                                                                <label for="product_description"
+                                                                    class="form-label">Description</label>
+                                                                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                                                <br>
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Save
+                                                                        changes</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         </div>
 
                                     </section>

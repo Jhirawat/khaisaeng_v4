@@ -249,26 +249,26 @@
 
 
                                             @foreach ($cartItems as $cart)
-                                            <div class="detail">
-                                            <div class="detail-amt">
-                                              {{ $cart->name }}
-                                            </div>
-                                            <div class="detail-amt">
-                                                {{ ($cart->price)}} x
-                                                {{ ($cart->quantity)}}
-                                            </div>
-                                              <div class="detail-amt">
-                                                {{ ($cart->quantity) * ($cart->price) }} บาท
-                                            </div>
-                                        </div>
-                                        @endforeach
+                                                <div class="detail">
+                                                    <div class="detail-amt">
+                                                        {{ $cart->name }}
+                                                    </div>
+                                                    <div class="detail-amt">
+                                                        {{ $cart->price }} x
+                                                        {{ $cart->quantity }}
+                                                    </div>
+                                                    <div class="detail-amt">
+                                                        {{ $cart->quantity * $cart->price }} บาท
+                                                    </div>
+                                                </div>
+                                            @endforeach
 
 
 
 
                                             <div class="detail">
                                                 <div class="detail-title">
-                                               จำนวนสินค้า
+                                                    จำนวนสินค้า
                                                 </div>
                                                 <div class="detail-amt">
                                                     {{ Cart::getTotalQuantity() }} ชิ้น
@@ -304,7 +304,8 @@
                                             <hr>
                                             <div class="detail">
                                                 <div class="detail-title detail-total">ยอดรวมสุทธิ : </div>
-                                                <div class="detail-amt total-amt">{{ Cart::getTotal() * 130/100 }} บาท</div>
+                                                <div class="detail-amt total-amt">{{ (Cart::getTotal() * 130) / 100 }} บาท
+                                                </div>
                                             </div>
                                             {{-- <div class="btn btn-primary btn-block place-order">PLACE ORDER</div>
                                             <div class="btn btn-primary btn-block place-order">PLACE ORDER</div> --}}
@@ -326,13 +327,16 @@
 
                                                 <hr>
 
-                                                <div class="btn btn-primary btn-block delivery-address">
-                                                    {{-- <a href="{{ route('checkout') }}"
-                                                        style="color:#FFFFFF;">เลือกที่อยู่นี้</a> --}}
 
-                                                        <a href="{{ route('checkout') }}"
+                                                <form action="{{ route('checkout') }}" method="GET">
+                                                    @csrf
+                                                    <button class="btn btn-primary btn-block place-order">ดำเนินการต่อ :</button>
+                                                </form>
+
+                                                {{-- <div class="btn btn-primary btn-block delivery-address">
+                                                    <a href="{{ route('checkout') }}"
                                                         style="color:#FFFFFF;">เลือกที่อยู่นี้</a>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -480,6 +484,5 @@
             });
 
         });
-
     </script>
 @endsection
