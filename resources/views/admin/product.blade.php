@@ -96,6 +96,7 @@
             let description = document.getElementById('description');
             description.value = data.description;
         }
+        
     </script>
 @endsection
 
